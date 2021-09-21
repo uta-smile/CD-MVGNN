@@ -1,0 +1,21 @@
+NUMBER ::= DIGIT | DIGIT DIGIT | DIGIT DIGIT DIGIT
+DIGIT ::= '0' | ... | '9'
+atom ::= bracket_atom | aliphatic_organic | aromatic_organic
+aliphatic_organic ::= 'B' | 'C' | 'N' | 'O' | 'F' | 'P' | 'S' | 'Cl' | 'Br' | 'I'
+aromatic_organic ::= 'b' | 'c' | 'n' | 'o' | 'p' | 's'
+bracket_atom ::= '[' isotope? symbol chiral? hcount? charge? class? ']'
+symbol ::= element_symbols | aromatic_symbols
+isotope ::= NUMBER
+element_symbols ::= 'H' | 'B' | 'C' | 'N' | 'O' | 'F' | 'P' | 'S' | 'Cl' | 'Br' | 'I'
+aromatic_symbols ::= 'b' | 'c' | 'n' | 'o' | 'p' | 's'
+chiral ::= '@' | '@@'
+hcount ::= 'H' | 'H' DIGIT
+charge ::= '-' | '-' DIGIT? DIGIT | '+' | '+' DIGIT? DIGIT
+class ::= ':' NUMBER
+bond ::= '-' | '=' | '#' | '$' | ':' | '/' | '\'
+ringbond ::= bond? DIGIT | bond? '%' DIGIT DIGIT
+branched_atom ::= atom ringbond* branch*
+branch ::= '(' chain ')' | '(' bond chain ')' | '(' dot chain ')'
+chain ::= branched_atom | chain branched_atom | chain bond branched_atom | chain dot branched_atom
+dot ::= '.'
+smiles ::= chain

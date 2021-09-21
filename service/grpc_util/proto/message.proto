@@ -1,0 +1,23 @@
+syntax = 'proto3';
+
+service MolePropServer {
+    rpc get_mole_prop(Request) returns (Response) {}
+}
+
+message Request {
+    repeated string tasks = 1;
+    repeated string smiles = 2;
+}
+
+message ListValue {
+    repeated float val = 1;
+}
+
+message TaskScore {
+    map<string, ListValue> task_score = 1;
+}
+
+message Response {
+    string msg = 1;
+    map<string, TaskScore> score = 2;
+}

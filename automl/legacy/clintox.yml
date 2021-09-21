@@ -1,0 +1,48 @@
+common:
+    studyName: clintox_5fold_5ensemble_dmpnn
+    algorithm: GRID_SEARCH
+    objectValueName: overall_scaffold_balanced_test_auc
+    metrics: [overall_random_test_auc]
+schedulerConfig:
+    trialNum: 500
+    parallelNum: 10
+parameterConfigs:
+-   name: dataset_name
+    type: ENUM
+    categoricalValues:
+    - 'clintox'
+-   name: dropout
+    type: ENUM
+    categoricalValues:
+    - '0.15'
+-   name: depth
+    type: ENUM
+    categoricalValues:
+    - '6'
+-   name: ffn_num_layers
+    type: ENUM_INT
+    discreteValues:
+    - 1
+-   name: hidden_size
+    type: ENUM
+    categoricalValues:
+    - '23'
+-   name: bond_drop_rate
+    type: ENUM
+    categoricalValues:
+    - '0.2'
+-   name: nencoders
+    type: ENUM
+    categoricalValues:
+    - '2'
+
+workerConfig:
+    runPlatform: SEVEN
+    sevenConfig:
+        user: weiyangxie
+    runCmd: sh main.sh
+    timeOut: 14400
+    configFiles:
+    - main.sh
+notification:
+    ifEmailNotification: False

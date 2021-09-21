@@ -1,0 +1,71 @@
+common:
+  studyName: esol_rdkit
+  algorithm: GRID_SEARCH
+  objectValueName: overall_random_test_auc
+schedulerConfig:
+  trialNum: 100
+  parallelNum: 10
+parameterConfigs:
+- name: dataset_name
+  type: ENUM
+  categoricalValues:
+  - 'no_du_moe'
+
+- name: init_lr
+  type: ENUM
+  categoricalValues:
+  - '0.0001'
+  - '0.0002'
+  - '0.0004'
+- name: depth
+  type: ENUM_INT
+  discreteValues:
+  - 2
+  - 4
+  - 6
+- name: hidden_size
+  type: ENUM_INT
+  discreteValues:
+  - 7
+  - 11
+  - 13
+  - 17
+- name: dropout
+  type: ENUM
+  categoricalValues:
+  - '0.15'
+  - '0.3'
+  - '0.5'
+- name: weight_decay
+  type: ENUM
+  categoricalValues:
+  - '0.00000001'
+  - '0.0000000001'
+
+- name: ffn_num_layers
+  type: ENUM_INT
+  discreteValues:
+  - 2
+  - 3
+  - 4
+
+- name: ffn_hidden_size
+  type: ENUM_INT
+  discreteValues:
+  - 7
+  - 11
+  - 13
+  - 17
+
+
+
+workerConfig:
+  runPlatform: SEVEN
+  ifHdfsUpload: false
+  sevenConfig:
+    user: weiyangxie
+  runCmd: sh main.sh
+  timeOut: 14400
+  configFiles:
+  - main.sh
+

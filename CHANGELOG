@@ -1,0 +1,64 @@
+10.23
+Add mordred descriptor support(1800~ descriptor).
+
+Merge multi gpu training by @kinghou, currently train in docker is tested. 
+
+Usage: `sh start_docker.sh`, cd to `/env`, `sh train_docker.sh`
+11.12
+Add a notebook to visualize  chemical space in 'scripts' folder.
+
+10.11
+Add support for jizhi platform(机智平台)
+
+9.17
+Add argument: `--coord` to append 3d distance info to bond. 
+
+Add `distance.py` in `features` fold to generate distance matrix pickle. (It takes time.)
+
+9.11
+DualMPNN by @royrong merged.
+
+Add argument: `--model_type` to specify the model we use. Currently available options: dualmpnn, mpnn, multimpnn.
+
+Add argument: `--skip_epoch` to control the number of the epoch before starting saving model during training.
+
+Add argument: `--early_stop_epoch` to control the number of epoch to stop before val loss or val metric stop drop.
+
+ 8.21
+Breaking changes
+* collate_fn now return `Torch.Tensor` object to avoid memory leak. see https://github.com/pytorch/pytorch/issues/13246 for more information. so the mpn input changed accordingly.
+
+8.17 
+refactor by @royrong
+* Add global finetune.
+* Hot-fix the bugs in Attention layer.
+* Add unittest framework in model folder
+
+8.7
+* MPN refactor by @royrong . readout extracted; index_selected_MD refactored; feature concat refactored and moved form MPNencoder to MPN.
+
+7.24
+* Fine tune support by @royrong, set `--fine_tune_coff` and `--checkpoint_paths` to fine tune.
+* MMPNN by @royrong
+* 建议使用原repo的保存特征的方式，快100倍：
+    - 使用script/save_features.py 保存特征 `--data_path muv.csv --features_generator rdkit_2d_normalized --save_path muv.npz --restart`
+    - 使用`--features_path muv.npz`载入特征 (注意去掉 --features_generator rdkit_2d_normalized 参数)
+* 根据@andylauliu的指导增加smiles enumeration， 增加`--aug_rate`参数：getitem时有aug_rate的概率使用enumeration的smile
+
+7.15
+* 增加dense, attention模块的选择 `--self_attention`, `--dense`
+* 增加对分子键的drop out, `--bond_drop_rate`
+* 修复了cache feature不生效的bug，可提升一倍效率
+
+7.12
+* 根据@royrong的指导增加dense模块优化模型，增加bias优化泛化性能。
+* 根据@royrong的指导优化参数搜索空间
+* 增加根据validation loss挑选模型的选项`--select_by_loss`
+
+7.3
+* 解决大数据集中的内存泄漏问题
+
+6.26
+* 使用新的托管验证模式运行，解决因任务被杀导致的训练停顿
+* 使用FastBO搜索模式
+

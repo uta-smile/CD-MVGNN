@@ -1,0 +1,46 @@
+smiles -> chain
+DIGIT -> '1'
+DIGIT -> '2'
+DIGIT -> '3'
+DIGIT -> '4'
+DIGIT -> '5'
+DIGIT -> '6'
+aliphatic_organic -> 'Br'
+aliphatic_organic -> 'C'
+aliphatic_organic -> 'Cl'
+aliphatic_organic -> 'F'
+aliphatic_organic -> 'N'
+aliphatic_organic -> 'O'
+aliphatic_organic -> 'S'
+aromatic_organic -> 'c'
+aromatic_organic -> 'n'
+aromatic_organic -> 'o'
+aromatic_organic -> 's'
+aromatic_symbols -> 'n'
+atom -> aliphatic_organic
+atom -> aromatic_organic
+atom -> bracket_atom
+bond -> '#'
+bond -> '-'
+bond -> '='
+bracket_atom -> '[' symbol ']'
+bracket_atom -> '[' symbol hcount ']'
+branch -> '(' bond chain ')'
+branch -> '(' chain ')'
+branch -> branch '(' bond chain ')'
+branch -> branch '(' chain ')'
+branched_atom -> atom
+branched_atom -> atom branch
+branched_atom -> atom ringbond
+branched_atom -> atom ringbond branch
+chain -> branched_atom
+chain -> chain bond branched_atom
+chain -> chain branched_atom
+element_symbols -> 'H'
+hcount -> 'H'
+ringbond -> DIGIT
+ringbond -> bond DIGIT
+ringbond -> ringbond DIGIT
+ringbond -> ringbond bond DIGIT
+symbol -> aromatic_symbols
+symbol -> element_symbols

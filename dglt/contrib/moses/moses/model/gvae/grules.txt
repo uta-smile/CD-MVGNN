@@ -1,0 +1,147 @@
+smiles -> chain
+DIGIT -> '0'
+DIGIT -> '1'
+DIGIT -> '2'
+DIGIT -> '3'
+DIGIT -> '4'
+DIGIT -> '5'
+DIGIT -> '6'
+DIGIT -> '7'
+DIGIT -> '8'
+DIGIT -> '9'
+NUMBER -> DIGIT
+NUMBER -> DIGIT DIGIT
+NUMBER -> DIGIT DIGIT DIGIT
+aliphatic_organic -> 'B'
+aliphatic_organic -> 'Br'
+aliphatic_organic -> 'C'
+aliphatic_organic -> 'Cl'
+aliphatic_organic -> 'F'
+aliphatic_organic -> 'I'
+aliphatic_organic -> 'N'
+aliphatic_organic -> 'O'
+aliphatic_organic -> 'P'
+aliphatic_organic -> 'S'
+aromatic_organic -> 'b'
+aromatic_organic -> 'c'
+aromatic_organic -> 'n'
+aromatic_organic -> 'o'
+aromatic_organic -> 'p'
+aromatic_organic -> 's'
+aromatic_symbols -> 'b'
+aromatic_symbols -> 'c'
+aromatic_symbols -> 'n'
+aromatic_symbols -> 'o'
+aromatic_symbols -> 'p'
+aromatic_symbols -> 's'
+atom -> aliphatic_organic
+atom -> aromatic_organic
+atom -> bracket_atom
+atom -> '*'
+bond -> '#'
+bond -> '$'
+bond -> '-'
+bond -> '/'
+bond -> ':'
+bond -> '='
+bond -> '\'
+bracket_atom -> '[' isotope symbol ']'
+bracket_atom -> '[' isotope symbol charge ']'
+bracket_atom -> '[' isotope symbol charge class ']'
+bracket_atom -> '[' isotope symbol chiral ']'
+bracket_atom -> '[' isotope symbol chiral charge ']'
+bracket_atom -> '[' isotope symbol chiral charge class ']'
+bracket_atom -> '[' isotope symbol chiral class ']'
+bracket_atom -> '[' isotope symbol chiral hcount ']'
+bracket_atom -> '[' isotope symbol chiral hcount charge ']'
+bracket_atom -> '[' isotope symbol chiral hcount charge class ']'
+bracket_atom -> '[' isotope symbol chiral hcount class ']'
+bracket_atom -> '[' isotope symbol class ']'
+bracket_atom -> '[' isotope symbol hcount ']'
+bracket_atom -> '[' isotope symbol hcount charge ']'
+bracket_atom -> '[' isotope symbol hcount charge class ']'
+bracket_atom -> '[' isotope symbol hcount class ']'
+bracket_atom -> '[' symbol ']'
+bracket_atom -> '[' symbol charge ']'
+bracket_atom -> '[' symbol charge class ']'
+bracket_atom -> '[' symbol chiral ']'
+bracket_atom -> '[' symbol chiral charge ']'
+bracket_atom -> '[' symbol chiral charge class ']'
+bracket_atom -> '[' symbol chiral class ']'
+bracket_atom -> '[' symbol chiral hcount ']'
+bracket_atom -> '[' symbol chiral hcount charge ']'
+bracket_atom -> '[' symbol chiral hcount charge class ']'
+bracket_atom -> '[' symbol chiral hcount class ']'
+bracket_atom -> '[' symbol class ']'
+bracket_atom -> '[' symbol hcount ']'
+bracket_atom -> '[' symbol hcount charge ']'
+bracket_atom -> '[' symbol hcount charge class ']'
+bracket_atom -> '[' symbol hcount class ']'
+branch -> '(' bond chain ')'
+branch -> '(' chain ')'
+branch -> '(' dot chain ')'
+branch -> branch '(' bond chain ')'
+branch -> branch '(' chain ')'
+branch -> branch '(' dot chain ')'
+branched_atom -> atom
+branched_atom -> atom branch
+branched_atom -> atom ringbond
+branched_atom -> atom ringbond branch
+chain -> branched_atom
+chain -> chain bond branched_atom
+chain -> chain branched_atom
+chain -> chain dot branched_atom
+charge -> '+'
+charge -> '+' DIGIT
+charge -> '+' DIGIT DIGIT
+charge -> '-'
+charge -> '-' DIGIT
+charge -> '-' DIGIT DIGIT
+chiral -> '@'
+chiral -> '@@'
+class -> ':' NUMBER
+dot -> '.'
+element_symbols -> 'Al'
+element_symbols -> 'As'
+element_symbols -> 'Au'
+element_symbols -> 'B'
+element_symbols -> 'Bi'
+element_symbols -> 'Br'
+element_symbols -> 'C'
+element_symbols -> 'Ca'
+element_symbols -> 'Cl'
+element_symbols -> 'Cr'
+element_symbols -> 'Cu'
+element_symbols -> 'F'
+element_symbols -> 'Fe'
+element_symbols -> 'H'
+element_symbols -> 'Hg'
+element_symbols -> 'I'
+element_symbols -> 'Lv'
+element_symbols -> 'Mn'
+element_symbols -> 'N'
+element_symbols -> 'O'
+element_symbols -> 'P'
+element_symbols -> 'Pt'
+element_symbols -> 'Ru'
+element_symbols -> 'S'
+element_symbols -> 'Se'
+element_symbols -> 'Si'
+element_symbols -> 'Tc'
+element_symbols -> 'Ti'
+element_symbols -> 'Tl'
+element_symbols -> 'Zn'
+hcount -> 'H'
+hcount -> 'H' DIGIT
+isotope -> NUMBER
+ringbond -> '%' DIGIT DIGIT
+ringbond -> DIGIT
+ringbond -> bond '%' DIGIT DIGIT
+ringbond -> bond DIGIT
+ringbond -> ringbond '%' DIGIT DIGIT
+ringbond -> ringbond DIGIT
+ringbond -> ringbond bond '%' DIGIT DIGIT
+ringbond -> ringbond bond DIGIT
+symbol -> aromatic_symbols
+symbol -> element_symbols
+symbol -> '*'

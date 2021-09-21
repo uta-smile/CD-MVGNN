@@ -1,0 +1,21 @@
+smiles -> chain
+DIGIT -> '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'
+NUMBER -> DIGIT | DIGIT DIGIT | DIGIT DIGIT DIGIT
+aliphatic_organic -> 'B' | 'Br' | 'C' | 'Cl' | 'F' | 'I' | 'N' | 'O' | 'P' | 'S'
+aromatic_organic -> 'b' | 'c' | 'n' | 'o' | 'p' | 's'
+aromatic_symbols -> 'b' | 'c' | 'n' | 'o' | 'p' | 's'
+atom -> aliphatic_organic | aromatic_organic | bracket_atom
+bond -> '#' | '$' | '-' | '/' | ':' | '=' | '\'
+bracket_atom -> '[' isotope symbol ']' | '[' isotope symbol charge ']' | '[' isotope symbol charge class ']' | '[' isotope symbol chiral ']' | '[' isotope symbol chiral charge ']' | '[' isotope symbol chiral charge class ']' | '[' isotope symbol chiral class ']' | '[' isotope symbol chiral hcount ']' | '[' isotope symbol chiral hcount charge ']' | '[' isotope symbol chiral hcount charge class ']' | '[' isotope symbol chiral hcount class ']' | '[' isotope symbol class ']' | '[' isotope symbol hcount ']' | '[' isotope symbol hcount charge ']' | '[' isotope symbol hcount charge class ']' | '[' isotope symbol hcount class ']' | '[' symbol ']' | '[' symbol charge ']' | '[' symbol charge class ']' | '[' symbol chiral ']' | '[' symbol chiral charge ']' | '[' symbol chiral charge class ']' | '[' symbol chiral class ']' | '[' symbol chiral hcount ']' | '[' symbol chiral hcount charge ']' | '[' symbol chiral hcount charge class ']' | '[' symbol chiral hcount class ']' | '[' symbol class ']' | '[' symbol hcount ']' | '[' symbol hcount charge ']' | '[' symbol hcount charge class ']' | '[' symbol hcount class ']'
+branch -> '(' bond chain ')' | '(' chain ')' | '(' dot chain ')' | branch '(' bond chain ')' | branch '(' chain ')' | branch '(' dot chain ')'
+branched_atom -> atom | atom branch | atom ringbond | atom ringbond branch
+chain -> branched_atom | chain bond branched_atom | chain branched_atom | chain dot branched_atom
+charge -> '+' | '+' DIGIT | '+' DIGIT DIGIT | '-' | '-' DIGIT | '-' DIGIT DIGIT
+chiral -> '@' | '@@'
+class -> ':' NUMBER
+dot -> '.'
+element_symbols -> 'B' | 'Br' | 'C' | 'Cl' | 'F' | 'H' | 'I' | 'N' | 'O' | 'P' | 'S'
+hcount -> 'H' | 'H' DIGIT
+isotope -> NUMBER
+ringbond -> '%' DIGIT DIGIT | DIGIT | bond '%' DIGIT DIGIT | bond DIGIT | ringbond '%' DIGIT DIGIT | ringbond DIGIT | ringbond bond '%' DIGIT DIGIT | ringbond bond DIGIT
+symbol -> aromatic_symbols | element_symbols

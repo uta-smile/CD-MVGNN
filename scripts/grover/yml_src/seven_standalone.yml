@@ -1,0 +1,10 @@
+version: 1
+kind: standalone
+jobname: grover
+container:
+  image: docker.oa.com/g_tfplus/docker.oa.com/g_tfplus/horovod:py3.6-tf1.12-pytorch1.1-rdkit2019-openbabel-torch-geometric
+  resources:
+    nvidia.com/gpu: 8
+  env:
+    - name: N_GPU
+      value: "8"

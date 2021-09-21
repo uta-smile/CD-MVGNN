@@ -1,0 +1,52 @@
+common:
+    studyName: bace_5fold_5ensemble_dmpnn
+    algorithm: GRID_SEARCH
+    objectValueName: overall_scaffold_balanced_test_auc
+    metrics: [overall_random_test_auc]
+schedulerConfig:
+    trialNum: 500
+    parallelNum: 10
+parameterConfigs:
+-   name: dataset_name
+    type: ENUM
+    categoricalValues:
+    - 'bace'
+-   name: dropout
+    type: ENUM
+    categoricalValues:
+    - '0.032'
+-   name: depth
+    type: ENUM
+    categoricalValues:
+    - '6'
+-   name: ffn_num_layers
+    type: ENUM_INT
+    discreteValues:
+    - 6
+-   name: hidden_size
+    type: ENUM
+    categoricalValues:
+    - '17'
+-   name: bond_drop_rate
+    type: ENUM
+    categoricalValues:
+    - '0'
+    - '0.4'
+-   name: nencoders
+    type: ENUM
+    categoricalValues:
+    - '1'
+    - '2'
+    - '3'
+    - '4'
+
+workerConfig:
+    runPlatform: SEVEN
+    sevenConfig:
+        user: weiyangxie
+    runCmd: sh main.sh
+    timeOut: 14400
+    configFiles:
+    - main.sh
+notification:
+    ifEmailNotification: False

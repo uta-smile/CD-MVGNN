@@ -1,0 +1,93 @@
+common:
+  studyName: DualMPNN
+    algorithm: RANDOM_SEARCH
+    objectValueName: overall_scaffold_balanced_test_auc
+    metrics: [overall_random_test_auc]
+schedulerConfig:
+  trialNum: 1
+  parallelNum: 1
+parameterConfigs:
+- name: init_lr
+    type: ENUM
+    categoricalValues:
+    - '0.0001'
+    - '0.0002'
+    - '0.0004'
+- name: depth
+  type: ENUM_INT
+  discreteValues:
+  - 2
+  - 4
+  - 6
+- name: hidden_size
+    type: ENUM_INT
+    discreteValues:
+    - 7
+    - 11
+    - 13
+    - 17
+- name: dropout
+  type: ENUM
+  categoricalValues:
+  - '0.5'
+-   name: weight_decay
+    type: ENUM
+    categoricalValues:
+    - '0.000001'
+    - '0.00000001'
+- name: ffn_num_layers
+  type: ENUM_INT
+  discreteValues:
+  - 2
+  - 4
+- name: ffn_hidden_size
+  type: ENUM_INT
+  discreteValues:
+  - 7
+  - 11
+  - 13
+  - 17
+-   name: bond_drop_rate
+    type: ENUM
+    categoricalValues:
+    - '0.0'
+    - '0.2'
+    - '0.6'
+-   name: aug_rate
+    type: ENUM
+    categoricalValues:
+    - '0.0'
+- name: attn_hidden
+  type: ENUM_INT
+  discreteValues:
+  - 32
+  - 64
+  - 128
+  - 256
+- name: attn_out
+  type: ENUM_INT
+  discreteValues:
+  - 1
+  - 2
+  - 4
+  - 8
+- name: dist_coff
+  type: ENUM
+  categoricalValues:
+  - '0.01'
+  - '0.05'
+  - '0.1'
+  - '0.2'
+- name: no_attach_fea
+  type: ENUM
+  categoricalValues:
+  - '--no_attach_fea'
+workerConfig:
+    runPlatform: SEVEN
+    sevenConfig:
+      user: royrong
+    runCmd: sh main.sh tox21
+    timeOut: 14400
+    configFiles:
+    - main.sh
+
