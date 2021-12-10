@@ -1,4 +1,4 @@
-name: dual
+name: cdmvgnn
 channels:
   - rdkit
   - pytorch
